@@ -1,0 +1,9 @@
+<h2>Cadastrar Despesa</h2>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <label>Descrição: <input formControlName="descricao"></label><br />
+    <label>Data Vencimento: <input formControlName="dataVencimento"></label><br />
+    <label>Data Pagamento: <input formControlName="dataPagamento"></label><br />
+    <label>Situação: <input formControlName="situacao"></label><br />
+    <label>Valor: <input formControlName="valor"></label><br />
+    <button type="submit" [disabled]="formulario.invalid">Cadastrar</button>
+</form>

@@ -1,6 +1,7 @@
-<h2>Despesas Cadastradas</h2>
-<table border="1" cellpadding="8" cellspacing="0">
-    <thead>
+<div class="container mt-4">
+<h2 class="mb-4">Consultar Despesas</h2>
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
         <tr>
             <th>Descrição</th>
             <th>Data Vencimento</th>
@@ -16,10 +17,11 @@
             <td>{{ despesa.dataPagamento }}</td>
             <td>{{ despesa.situacao }}</td>
             <td>{{ despesa.valor }}</td>
-            <td>
-                <button (click)="editarDespesa(despesa)">Editar</button>
-                <button (click)="excluirDespesa(despesa.id!)">Excluir</button>
+            <td class="text-center">
+                <button class="btn btn-sm btn-warning me-2" (click)="editarDespesa(despesa)">Editar</button>
+                <button class="btn btn-sm btn-danger" (click)="excluirDespesa(despesa.id!)">Excluir</button>
             </td>
         </tr>
     </tbody>
 </table>
+</div>

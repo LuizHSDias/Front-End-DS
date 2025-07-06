@@ -10,3 +10,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(), provideAnimationsAsync()
   ]
 };
+
+export const appSettings = {
+  apiBaseUrl : 'http://localhost:8080'
+};

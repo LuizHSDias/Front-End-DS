@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Despesa } from '../models/despesa';
+import { appSettings } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DespesaService {
 
-  private apiUrl = 'http://localhost:8080/despesas';
+  private apiUrl = `${appSettings.apiBaseUrl}/despesas`;
 
   constructor(private http: HttpClient) { }
 

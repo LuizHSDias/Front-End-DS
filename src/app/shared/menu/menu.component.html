@@ -9,12 +9,24 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
+
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cadastrar" routerLinkActive="active">Cadastrar</a>
+          <a class="nav-link" routerLink="/categorias" routerLinkActive="active">Categorias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/consultar" routerLinkActive="active">Consultar</a>
+          <a class="nav-link" routerLink="/despesas" routerLinkActive="active">Despesas</a>
         </li>
+        <li>
+          <a class="nav-link" routerLink="/usuarios" routerLinkActive="active">Usuários</a>
+        </li>
+
+        <li class="nav-item" *ngFor="let item of menu">
+          <a class="nav-link" [routerLink]="item.rota" routerLinkActive="active" *ngIf="item.niveis.includes(nivel)">
+            {{item.descricao}}
+          </a>
+
+        </li>
+
       </ul>
     </div>
   </div>

@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
   styleUrl: './categoria.component.css'
 })
 export class CategoriaComponent {
-   lista: Categoria[] = [];
+  lista: Categoria[] = [];
   objeto!: Categoria;
   modalAberto = false;
   formGroup: FormGroup;
@@ -20,8 +20,8 @@ export class CategoriaComponent {
   constructor(private service: CategoriaService, private formBuilder: FormBuilder) {
     this.formGroup = this.formBuilder.group({
       id: [null],
-      descricao: ['', Validators.required]
-    //tipo: ['', Validators.required]
+      descricao: ['', Validators.required],
+      tipo: ['', Validators.required]
     });
   }
 
@@ -86,6 +86,7 @@ export class CategoriaComponent {
 
       this.objeto.id = formValue.id;
       this.objeto.descricao = formValue.descricao;
+      this.objeto.tipo = formValue.tipo;
 
       this.service.salvar(this.objeto).subscribe({
         next: () => {

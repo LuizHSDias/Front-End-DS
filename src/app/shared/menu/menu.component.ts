@@ -30,6 +30,6 @@ export class MenuComponent {
       this.nivel = dadosToken.roles.replace(/^ROLE_/, '');
     } else {
       console.warn('Não foi possível determinar o nível do usuário a partir do token.');
-    }
-  } */
+    } 
+  } */ 
 }

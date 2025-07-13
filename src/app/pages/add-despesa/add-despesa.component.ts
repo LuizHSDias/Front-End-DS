@@ -11,7 +11,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './add-despesa.component.html',
-  styleUrl: './add-despesa.component.css'
+  styleUrls: ['./add-despesa.component.css']
 })
 export class AddDespesaComponent {
 
@@ -40,6 +40,7 @@ export class AddDespesaComponent {
     this.carregarListaCategoria();
 
     const id = Number(this.route.snapshot.paramMap.get('id'));
+
     if (id) {
       this.despesaService.buscarPorId(id).subscribe(retorno => {
         const categoriaSelecionada = this.listaCategorias.find(cat => cat.id === retorno.categoria?.id);

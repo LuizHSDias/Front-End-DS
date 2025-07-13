@@ -30,6 +30,14 @@
         <label for="valor" class="form-label">Valor</label>
         <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2" prefix="R$ " />
       </div>
+
+      <div class="col-md-6 mb-3">
+                <label for="categoria" class="form-label">Categoria</label>
+                <select class="form-select" aria-label="Default select example" formControlName="categoria">
+                    <option [ngValue]="null" disabled selected>Selecione uma Categoria</option>
+                    <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
+                </select>
+            </div>
     </div>
 
     <div class="d-flex justify-content-between">

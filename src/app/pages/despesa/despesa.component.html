@@ -8,26 +8,26 @@
   <table class="table table-bordered table-hover align-middle">
     <thead class="table-dark">
       <tr>
-        <th>Descrição</th>
-        <th>Vencimento</th>
-        <th>Pagamento</th>
-        <th>Situação</th>
-        <th>Valor</th>
-        <th>Categoria</th>
+        <th class="col-descricao">Descrição</th>
+        <th class="col-vencimento">Vencimento</th>
+        <th class="col-pagamento">Pagamento</th>
+        <th class="col-situacao">Situação</th>
+        <th class="col-valor">Valor</th>
+        <th class="col-categoria">Categoria</th>
         <th class="text-center">Ações</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let despesa of lista">
-        <td>{{ despesa.descricao }}</td>
-        <td>{{ despesa.dataVencimento | date:'dd/MM/yyyy' }}</td>
-        <td>{{ despesa.dataPagamento | date:'dd/MM/yyyy' }}</td>
-        <td>{{ despesa.situacao }}</td>
-        <td>{{ despesa.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
-        <td>{{ despesa.categoria?.descricao }}</td>
+      <tr *ngFor="let objeto of lista">
+        <td>{{ objeto.descricao }}</td>
+        <td>{{ objeto.dataVencimento | date:'dd/MM/yyyy' }}</td>
+        <td>{{ objeto.dataPagamento | date:'dd/MM/yyyy' }}</td>
+        <td>{{ objeto.situacao }}</td>
+        <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ objeto.categoria?.descricao }}</td>
         <td class="text-center">
-          <button class="btn btn-sm btn-warning me-2" (click)="editar(despesa.id)">Editar</button>
-          <button class="btn btn-sm btn-danger" (click)="excluir(despesa.id!)">Excluir</button>
+          <button class="btn btn-sm btn-warning me-2" (click)="editar(objeto.id)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="excluir(objeto.id!)">Excluir</button>
         </td>
       </tr>
     </tbody>

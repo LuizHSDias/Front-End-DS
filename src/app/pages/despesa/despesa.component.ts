@@ -24,6 +24,7 @@ export class DespesaComponent {
   carregarLista(): void {
     this.service.listar().subscribe({
       next: (retornoJson) => {
+       console.log(JSON.stringify(retornoJson, null, 2)); 
         this.lista = retornoJson;
       },
       error: () => {

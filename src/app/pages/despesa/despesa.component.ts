@@ -13,7 +13,6 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class DespesaComponent {
   lista: Despesa[] = [];
-  exibirTabela: boolean = true;
 
   constructor(private service: DespesaService, private router: Router) {}
 
@@ -23,8 +22,7 @@ export class DespesaComponent {
 
   carregarLista(): void {
     this.service.listar().subscribe({
-      next: (retornoJson) => {
-       console.log(JSON.stringify(retornoJson, null, 2)); 
+      next: (retornoJson) => { 
         this.lista = retornoJson;
       },
       error: () => {

@@ -38,6 +38,14 @@
                     <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria">{{ categoria.descricao }}</option>
                 </select>
             </div>
+
+       <div class="col-md-6 mb-3">
+                <label for="usuario" class="form-label">Usuário</label>
+                <select class="form-select" aria-label="Default select example" formControlName="usuario">
+                    <option [ngValue]="null" disabled selected>Selecione um Usuário</option>
+                    <option *ngFor="let usuario of listaUsuarios" [ngValue]="usuario">{{ usuario.nome }}</option>
+                </select>
+            </div>
     </div>
 
     <div class="d-flex justify-content-between">

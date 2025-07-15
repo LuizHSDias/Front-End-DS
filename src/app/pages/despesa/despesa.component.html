@@ -14,6 +14,7 @@
         <th class="col-situacao">Situação</th>
         <th class="col-valor">Valor</th>
         <th class="col-categoria">Categoria</th>
+        <th class="col-usuario">Usuário</th>
         <th class="text-center">Ações</th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
         <td>{{ objeto.situacao }}</td>
         <td>{{ objeto.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
         <td>{{ objeto.categoria?.descricao }}</td>
+        <td>{{ objeto.usuario?.nome }}</td>
         <td class="text-center">
           <button class="btn btn-sm btn-warning me-2" (click)="editar(objeto.id)">Editar</button>
           <button class="btn btn-sm btn-danger" (click)="excluir(objeto.id!)">Excluir</button>

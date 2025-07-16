@@ -7,6 +7,8 @@ import { AddDespesaComponent } from './pages/add-despesa/add-despesa.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { AddUsuarioComponent } from './pages/add-usuario/add-usuario.component';
 import { LoginComponent } from './pages/login/login.component';
+import { ReceitaComponent } from './pages/receita/receita.component';
+import { AddReceitaComponent } from './pages/add-receita/add-receita.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent } ,
@@ -17,5 +19,8 @@ export const routes: Routes = [
     { path: 'usuarios', component: UsuarioComponent, },
     { path: 'add-usuario', component: AddUsuarioComponent },
     { path: 'add-usuario/:id', component: AddUsuarioComponent },
-    { path: '', component: LoginComponent}
+    { path: '', component: LoginComponent},
+    { path: 'receitas', component: ReceitaComponent, },
+    { path: 'add-receita', component: AddReceitaComponent },
+    { path: 'add-receita/:id', component: AddReceitaComponent },
 ];

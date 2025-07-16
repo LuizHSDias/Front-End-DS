@@ -12,25 +12,23 @@ export class UsuarioService {
 
   private apiUrl = `${appSettings.apiBaseUrl}/usuarios`;
 
-  constructor(private http: HttpClient, private loginService: LoginService) { }
+   constructor(private http: HttpClient, private loginService: LoginService) { }
 
   listar(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(this.apiUrl, this.loginService.gerarCabecalhoHTTP());
   }
 
   salvar(usuario: Usuario): Observable<Usuario> {
-    if (usuario.id) {
-      return this.http.put<Usuario>(`${this.apiUrl}/${usuario.id}`, usuario, this.loginService.gerarCabecalhoHTTP());
-    } else {
       return this.http.post<Usuario>(this.apiUrl, usuario, this.loginService.gerarCabecalhoHTTP());
-    }
   }
 
   buscarPorId(id: number): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.apiUrl}/${id}`, this.loginService.gerarCabecalhoHTTP());
-  }
+  }   
 
-  excluir(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  }
+  verificarLogin(login: string): Observable<boolean> {
+    const url = `${this.apiUrl}/existe?login=${encodeURIComponent(login)}`;
+    return this.http.get<boolean>(url, this.loginService.gerarCabecalhoHTTP());
+  }  
+
 }

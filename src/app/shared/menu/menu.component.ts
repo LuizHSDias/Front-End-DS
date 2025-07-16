@@ -16,7 +16,9 @@ export class MenuComponent {
 
   menu = [
     { descricao: 'Categorias', rota: '/tipos', niveis: ['NIVEL1','NIVEL2','NIVEL3']},
-    { descricao: 'Despesas', rota: '/despesas', niveis: ['NIVEL1', 'NIVEL2']}
+    { descricao: 'Despesas', rota: '/despesas', niveis: ['NIVEL1', 'NIVEL2']},
+    { descricao: 'Receitas', rota: '/receitas', niveis: ['NIVEL1', 'NIVEL2', 'NIVEL3']},
+    { descricao: 'Usuarios', rota: '/usuarios', niveis: ['NIVEL1', 'NIVEL2', 'NIVEL3']}
   ]
 
   constructor(private loginService: LoginService){}

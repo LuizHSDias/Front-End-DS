@@ -10,6 +10,7 @@
       <tr>
         <th class="col-imagem"></th>
         <th class="col-nome">Nome</th>
+        <th class="col-email">Email</th>
         <th class="col-login">Login</th>
         <th class="col-nivel">Nível</th>
       </tr>
@@ -18,6 +19,7 @@
       <tr *ngFor="let objeto of lista">
         <td> <img [src]="objeto.urlImagem || 'assets/usuario-padrao.png'" class="img-usuario"> </td>
         <td>{{ objeto.nome }}</td>
+        <td>{{ objeto.email }}</td>
         <td>{{ objeto.login }}</td>
         <td>{{ objeto.nivelAcesso }}</td>
       </tr>

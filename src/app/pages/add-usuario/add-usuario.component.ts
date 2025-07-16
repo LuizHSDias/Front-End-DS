@@ -27,6 +27,7 @@ export class AddUsuarioComponent {
     this.formGroup = this.formBuilder.group({
       id: [null],
       nome: ['', Validators.required],
+      email: ['', Validators.required],
       login: ['', Validators.required],
       senha: ['', Validators.required],
       nivelAcesso: ['', Validators.required]
@@ -43,6 +44,7 @@ export class AddUsuarioComponent {
       if (this.imagemSelecionada) {
         this.imagemService.upload(this.imagemSelecionada).subscribe({
           next: (imagem) => {
+             // salva os dados do usuário com a imagem incluída
             this.salvarUsuario(imagem);
           },
           error: () => {
@@ -50,7 +52,7 @@ export class AddUsuarioComponent {
           }
         });
       } else {
-        this.salvarUsuario(); 
+        this.salvarUsuario(); // salva sem imagem
       }
     }
   }
@@ -59,6 +61,7 @@ export class AddUsuarioComponent {
  salvarUsuario(imagem?: Imagem): void {
   let usuario = new Usuario()
   usuario.nome = this.formGroup.get('nome')?.value,
+  usuario.email = this.formGroup.get('email')?.value,
   usuario.login = this.formGroup.get('login')?.value,
   usuario.senha = this.formGroup.get('senha')?.value,
   usuario.nivelAcesso = this.formGroup.get('nivelAcesso')?.value,
@@ -92,6 +95,7 @@ export class AddUsuarioComponent {
           this.formGroup.get('login')?.setErrors({ loginDuplicado: true });
         } else {
           this.mensagemErroLogin = "";
+          // Limpa o erro de loginDuplicado, se existir
           this.formGroup.get('login')?.setErrors(null);
         }
       },

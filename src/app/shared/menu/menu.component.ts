@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -8,30 +9,59 @@ import { LoginService } from '../../services/login.service';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrls: ['./menu.component.css'] 
 })
-
 export class MenuComponent {
-  nivel = 'NIVEL0';
 
   menu = [
     { descricao: 'Categorias', rota: '/tipos', niveis: ['NIVEL1','NIVEL2','NIVEL3']},
     { descricao: 'Despesas', rota: '/despesas', niveis: ['NIVEL1', 'NIVEL2']},
     { descricao: 'Receitas', rota: '/receitas', niveis: ['NIVEL1', 'NIVEL2', 'NIVEL3']},
     { descricao: 'Usuarios', rota: '/usuarios', niveis: ['NIVEL1', 'NIVEL2', 'NIVEL3']}
-  ]
+  ];
 
-  constructor(private loginService: LoginService){}
+  private subscription!: Subscription;
+  menuUsuario: { descricao: string, rota: string, niveis: string[] }[] = [];
+  nivelUsuario!: string;
+  nomeUsuario!: string;
 
-  /*
-  ngOnInit(): void {
+  constructor(private loginService: LoginService, private router: Router) { 
+      this.nivelUsuario = '';
+      this.nomeUsuario = '';
+      this.menuUsuario = [];
+  }
+
+  ngOnInit(): void {    
+    this.subscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.atualizarMenu();
+      }
+    });
+
+    this.atualizarMenu(); 
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe(); 
+  }
+
+  private atualizarMenu(): void {
     const dadosToken = this.loginService.extrairDadosToken();
-    console.log(dadosToken)
-    if (dadosToken && dadosToken.roles){
-      // remove "ROLE_" com a empressão regular /^ROLE_/
-      this.nivel = dadosToken.roles.replace(/^ROLE_/, '');
+
+    if (dadosToken && dadosToken.roles) {
+      this.nivelUsuario = dadosToken.roles.replace(/^ROLE_/, '');
+      this.nomeUsuario = dadosToken.sub;
+      this.menuUsuario = this.menu.filter(item => item.niveis.includes(this.nivelUsuario));
     } else {
-      console.warn('Não foi possível determinar o nível do usuário a partir do token.');
-    } 
-  } */ 
+      this.nivelUsuario = '';
+      this.nomeUsuario = '';
+      this.menuUsuario = [];
+    }
+  }
+
+  sair(): void {
+    this.loginService.limparToken();
+    this.atualizarMenu();    
+  }
 }
+

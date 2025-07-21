@@ -12,5 +12,5 @@ export const appConfig: ApplicationConfig = {
 };
 
 export const appSettings = {
-  apiBaseUrl : 'http://localhost:8080'
+  apiBaseUrl : 'https://ds-projeto-back.onrender.com'
 };

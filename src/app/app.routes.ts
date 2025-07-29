@@ -9,6 +9,7 @@ import { AddUsuarioComponent } from './pages/add-usuario/add-usuario.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ReceitaComponent } from './pages/receita/receita.component';
 import { AddReceitaComponent } from './pages/add-receita/add-receita.component';
+import { ExtratoComponent } from './pages/extrato/extrato.component'; 
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent } ,
@@ -23,4 +24,6 @@ export const routes: Routes = [
     { path: 'receitas', component: ReceitaComponent, },
     { path: 'add-receita', component: AddReceitaComponent },
     { path: 'add-receita/:id', component: AddReceitaComponent },
+    { path: 'extrato', component: ExtratoComponent }
+
 ];

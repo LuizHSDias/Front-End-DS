@@ -24,8 +24,13 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label for="situacao" class="form-label">Situação</label>
-        <input id="situacao" type="text" class="form-control" formControlName="situacao" />
+        <select id="situacao" class="form-select" formControlName="situacao">
+        <option value="" disabled selected>Selecione uma Situação</option>
+        <option value="Pago">Pago</option>
+        <option value="Pendente">Pendente</option>   
+        </select>
       </div>
+
       <div class="col-md-6 mb-3">
         <label for="valor" class="form-label">Valor</label>
         <input id="valor" type="text" class="form-control" formControlName="valor" mask="separator.2" prefix="R$ " />

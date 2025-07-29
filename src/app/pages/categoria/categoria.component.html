@@ -48,7 +48,11 @@
           </div>
           <div class="mb-3">
             <label for="tipo" class="form-label">Tipo</label>
-            <input id="tipo" class="form-control" formControlName="tipo">
+            <select id="tipo" class="form-select" formControlName="tipo">
+            <option value="" disabled selected>Selecione um tipo</option>
+            <option value="Fixo">Fixo</option>
+            <option value="Variável">Variável</option>
+            </select>
           </div>
         </div>
 
